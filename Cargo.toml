@@ -1,11 +1,11 @@
 [package]
-name = "yandex-rasp-rs"
-authors = ["KryptonFox"]
+name = "yandex-rasp-api"
+authors = ["AlexNomad"]
 version = "1.0.0"
 edition = "2021"
 readme = "README.md"
-repository = "https://github.com/KryptonFox/yandex-rasp-rs"
-homepage = "https://github.com/KryptonFox/yandex-rasp-rs"
+repository = "https://github.com/AlexNomad/yandex-rasp-rs"
+homepage = "https://github.com/AlexNomad/yandex-rasp-rs"
 description = "Библиотека для взаимодействия с API Яндекс.Расписаний на языке Rust"
 license = "MIT"
 license-file = "LICENSE"
