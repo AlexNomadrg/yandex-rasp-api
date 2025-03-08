@@ -6,7 +6,7 @@ edition = "2021"
 readme = "README.md"
 repository = "https://github.com/AlexNomad/yandex-rasp-rs"
 homepage = "https://github.com/AlexNomad/yandex-rasp-rs"
-description = "Библиотека для взаимодействия с API Яндекс.Расписаний на языке Rust"
+description = "Wrapper for YandexRasp API"
 license = "MIT"
 
 [dependencies]

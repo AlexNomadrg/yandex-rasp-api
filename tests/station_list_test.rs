@@ -5,5 +5,5 @@ use yandex_rasp_api;
 async fn test() {
     let api_key = std::env::var("API_KEY").unwrap();
     let client = yandex_rasp_api::YaRaspClient::new(&api_key);
-    assert!(client.stations_list().send().await.is_ok())
+    client.stations_list().send().await.unwrap();
 }
