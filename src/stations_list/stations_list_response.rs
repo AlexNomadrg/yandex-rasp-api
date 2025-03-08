@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 
+use crate::enums::TransportType;
+
 #[derive(Default, Debug, Clone, Serialize, Deserialize)]
 pub struct StationsListResponse {
     pub countries: Vec<Country>,
@@ -41,7 +43,7 @@ pub struct Station {
     pub direction: String,
     pub codes: Codes,
     pub station_type: String,
-    pub transport_type: String,
+    pub transport_type: TransportType,
     pub longitude: LongOrLatItude,
     pub latitude: LongOrLatItude,
 }

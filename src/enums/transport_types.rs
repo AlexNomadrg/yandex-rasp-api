@@ -1,6 +1,6 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize, Serializer};
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub enum TransportType {
     #[default]
     All,
@@ -10,6 +10,7 @@ pub enum TransportType {
     Bus,
     Water,
     Helicopter,
+    Sea,
 }
 
 impl TransportType {
@@ -22,6 +23,7 @@ impl TransportType {
             &TransportType::Bus => String::from("bus"),
             &TransportType::Water => String::from("water"),
             &TransportType::Helicopter => String::from("helicopter"),
+            &TransportType::Sea => String::from("sea"),
         }
     }
 }
@@ -41,6 +43,7 @@ impl<'de> Deserialize<'de> for TransportType {
             "bus" => Ok(TransportType::Bus),
             "water" => Ok(TransportType::Water),
             "helicopter" => Ok(TransportType::Helicopter),
+            "sea" => Ok(TransportType::Sea),
             _ => Err(serde::de::Error::custom(format!(
                 "Unknown transport type: {}",
                 s
@@ -49,12 +52,12 @@ impl<'de> Deserialize<'de> for TransportType {
     }
 }
 
-// impl Serialize for TransportTypes {
-//     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-//     where
-//         S: Serializer,
-//     {
-//         let s = self.to_string();
-//         serializer.serialize_str(&s)
-//     }
-// }
+impl Serialize for TransportType {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let s = self.to_string();
+        serializer.serialize_str(&s)
+    }
+}
