@@ -1,4 +1,4 @@
-use yandex_rasp_rs::YaRaspClient;
+use yandex_rasp_api::YaRaspClient;
 
 #[tokio::main]
 async fn main() {

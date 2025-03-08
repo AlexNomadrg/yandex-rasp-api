@@ -1,6 +1,6 @@
 use chrono::Local;
-use yandex_rasp_rs::enums::TransportType;
-use yandex_rasp_rs::YaRaspClient;
+use yandex_rasp_api::enums::TransportType;
+use yandex_rasp_api::YaRaspClient;
 
 #[tokio::main]
 async fn main() {

@@ -8,7 +8,6 @@ repository = "https://github.com/AlexNomad/yandex-rasp-rs"
 homepage = "https://github.com/AlexNomad/yandex-rasp-rs"
 description = "Библиотека для взаимодействия с API Яндекс.Расписаний на языке Rust"
 license = "MIT"
-license-file = "LICENSE"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }

@@ -1,24 +1,15 @@
-# yandex-rasp-rs
-⚠ Проект находится в разработке
+# yandex-rasp-api
 ### Библиотека для взаимодействия с API [Яндекс.Расписаний](https://rasp.yandex.ru/) на языке Rust
 
 ---
 
-- Основана на Reqwest и Serde
-- Простая в использовании
-- Асинхронная
-- Простое взаимодействие
-- Типизация возвращаемых данных
-- Обработка ошибок
-- Все методы API (в разработке)
+> To use this crate you need an API token. [You can get it here](https://yandex.ru/dev/rasp/doc/ru/concepts/access)
 
-### Пример кода
 
-Для работы необходимо получить токен. [Инструкция](https://yandex.ru/dev/rasp/doc/ru/concepts/access)
-
+# Code Example
 ```rust
-use yandex_rasp_rs::enums::TransportTypes;
-use yandex_rasp_rs::{YaRaspClient, SearchResponse, StationsListResponse};
+use yandex_rasp_api::enums::TransportTypes;
+use yandex_rasp_api::{YaRaspClient, SearchResponse, StationsListResponse};
 
 #[tokio::main]
 async fn main() {
@@ -43,10 +34,3 @@ async fn main() {
         .unwrap();
 }
 ```
-Другие примеры можно найти в папке /examples
-
-### Доступные методы
-
-- /search
-- /schedule
-- /stations_list
