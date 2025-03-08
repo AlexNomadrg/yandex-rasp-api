@@ -34,8 +34,8 @@ impl<'de> Deserialize<'de> for TransportType {
     where
         D: serde::Deserializer<'de>,
     {
-        let s: &str = Deserialize::deserialize(deserializer)?;
-        match s {
+        let s: String = Deserialize::deserialize(deserializer)?;
+        match s.as_str() {
             "all" => Ok(TransportType::All),
             "plane" => Ok(TransportType::Plane),
             "train" => Ok(TransportType::Train),
