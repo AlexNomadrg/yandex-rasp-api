@@ -34,3 +34,5 @@ async fn main() {
         .unwrap();
 }
 ```
+
+Forked from: [KryptonFox/yandex-rasp-rs](https://github.com/KryptonFox/yandex-rasp-rs)
