@@ -37,5 +37,10 @@ jobs:
           restore-keys: |
             cargo-target-${{ runner.os }}-
 
-      - name: Run Tests
+      - name: Set API Key Environment Variable
+        run: echo "RASP_API_KEY=${{ secrets.RASP_API_KEY }}" >> $GITHUB_ENV
+
+      - name: Run Tests with API Key
+        env:
+          MY_API_KEY: ${{ secrets.RASP_API_KEY }}
         run: cargo test --all-features
