@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize, Serializer};
 
-#[derive(Default, Debug, Clone)]
+#[derive(Default, Debug, Clone, PartialEq, Eq)]
 pub enum TransportType {
     #[default]
     All,
