@@ -4,7 +4,7 @@ use yandex_rasp_api::YaRaspClient;
 
 #[tokio::main]
 async fn main() {
-    let client = YaRaspClient::new("Токен");
+    let client = YaRaspClient::new("Token");
 
     let from = "s9603402";
     let to = "s9602675";

@@ -1,5 +1,5 @@
 # yandex-rasp-api
-### Библиотека для взаимодействия с API [Яндекс.Расписаний](https://rasp.yandex.ru/) на языке Rust
+### Library for interacting with the [Yandex Timetable](https://rasp.yandex.ru/) API in Rust
 
 ---
 
@@ -13,21 +13,21 @@ use yandex_rasp_api::{YaRaspClient, SearchResponse, StationsListResponse};
 
 #[tokio::main]
 async fn main() {
-    let client: YaRaspClient = YaRaspClient::new("[ВАШ токен API Яндекс.Расписаний]");
+    let client: YaRaspClient = YaRaspClient::new("[YOUR Yandex Timetable API token]");
 
-    // Получение списка всех станций из API
+    // Retrieve the list of all stations from the API
     let stations_list: StationsListResponse = client
         .stations_list()
         .send()
         .await
         .unwrap();
 
-    // Поиск маршрута между двумя станциями по их коду
+    // Search for a route between two stations by their code
     let from = "s9603402";
     let to = "s9602675";
     let search: SearchResponse = client
         .search(&from, &to)
-        // Параметры запроса устанавливаются с помощью функций с соответствующим именем
+        // Request parameters are set using functions with the corresponding names
         .transport_types(TransportTypes::Suburban) 
         .send()
         .await
