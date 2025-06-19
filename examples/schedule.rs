@@ -3,7 +3,7 @@ use yandex_rasp_api::YaRaspClient;
 
 #[tokio::main]
 async fn main() {
-    let client = YaRaspClient::new("Токен");
+    let client = YaRaspClient::new("Token");
 
     let station = "s9603402";
     let schedule = client

@@ -18,7 +18,7 @@ impl StationsListRequestBuilder {
         }
     }
 
-    /// Отправить запрос
+    /// Send the request
     pub async fn send(&self) -> Result<StationsListResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
