@@ -71,6 +71,7 @@ impl ThreadRequestBuilder {
     }
 
     pub fn show_systems(&mut self, code_system: CodeSystem) -> &mut Self {
+        self.show_systems = code_system;
         self
     }
 }
