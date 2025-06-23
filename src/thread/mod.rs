@@ -14,7 +14,7 @@ pub struct ThreadRequestBuilder {
     to: String,
     lang: Lang,
     date: NaiveDate,
-    show_systems: String,
+    show_systems: CodeSystem,
 }
 
 impl ThreadRequestBuilder {
