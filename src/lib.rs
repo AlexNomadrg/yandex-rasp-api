@@ -4,10 +4,12 @@ mod handle_response;
 pub mod schedule;
 pub mod search;
 pub mod stations_list;
+pub mod thread;
 
 use crate::schedule::ScheduleRequestBuilder;
 use crate::search::SearchRequestBuilder;
 use crate::stations_list::StationsListRequestBuilder;
+use crate::thread::ThreadRequestBuilder;
 
 /// Main client for interacting with the API
 #[derive(Clone)]
@@ -42,5 +44,9 @@ impl YaRaspClient {
     /// Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/stations-list>
     pub fn stations_list(&self) -> StationsListRequestBuilder {
         StationsListRequestBuilder::new(self.clone())
+    }
+
+    pub fn thread(&self, thread_uid: &str) -> ThreadRequestBuilder {
+        ThreadRequestBuilder::new(self.clone(), thread_uid)
     }
 }
