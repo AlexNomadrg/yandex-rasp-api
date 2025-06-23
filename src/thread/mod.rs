@@ -34,7 +34,7 @@ impl ThreadRequestBuilder {
         let response = self
             .ya_rasp_client
             .reqwest_client
-            .get("https://api.rasp.yandex.net/v3.0/thread")
+            .get("https://api.rasp.yandex.net/v3.0/thread/")
             .query(&[
                 ("format", "json"),
                 ("apikey", &self.ya_rasp_client.api_key),
@@ -65,7 +65,7 @@ impl ThreadRequestBuilder {
         self
     }
 
-    pub fn data(mut self, date: NaiveDate) -> Self {
+    pub fn date(mut self, date: NaiveDate) -> Self {
         self.date = date;
         self
     }
