@@ -30,7 +30,7 @@ impl ThreadRequestBuilder {
         }
     }
 
-    pub async fn send(&self) -> Result<ThreadResponse, YaRaspError> {
+    pub async fn send(self) -> Result<ThreadResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
             .reqwest_client
@@ -51,26 +51,26 @@ impl ThreadRequestBuilder {
         handle_response::<ThreadResponse>(response).await
     }
 
-    pub fn from(&mut self, station_id: &str) -> &mut Self {
+    pub fn from(mut self, station_id: &str) -> Self {
         self.from = station_id.to_owned();
         self
     }
-    pub fn to(&mut self, station_id: &str) -> &mut Self {
+    pub fn to(mut self, station_id: &str) -> Self {
         self.to = station_id.to_owned();
         self
     }
 
-    pub fn lang(&mut self, lang: Lang) -> &mut Self {
+    pub fn lang(mut self, lang: Lang) -> Self {
         self.lang = lang;
         self
     }
 
-    pub fn data(&mut self, date: NaiveDate) -> &mut Self {
+    pub fn data(mut self, date: NaiveDate) -> Self {
         self.date = date;
         self
     }
 
-    pub fn show_systems(&mut self, code_system: CodeSystem) -> &mut Self {
+    pub fn show_systems(mut self, code_system: CodeSystem) -> Self {
         self.show_systems = code_system;
         self
     }

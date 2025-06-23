@@ -19,7 +19,7 @@ impl StationsListRequestBuilder {
     }
 
     /// Send the request
-    pub async fn send(&self) -> Result<StationsListResponse, YaRaspError> {
+    pub async fn send(self) -> Result<StationsListResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
             .reqwest_client
@@ -38,7 +38,7 @@ impl StationsListRequestBuilder {
         }
     }
 
-    pub fn lang(&mut self, lang: Lang) -> &mut Self {
+    pub fn lang(mut self, lang: Lang) -> Self {
         self.lang = lang;
         self
     }

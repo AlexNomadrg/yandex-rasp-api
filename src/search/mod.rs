@@ -45,7 +45,7 @@ impl SearchRequestBuilder {
     }
 
     /// Send the request
-    pub async fn send(&self) -> Result<SearchResponse, YaRaspError> {
+    pub async fn send(self) -> Result<SearchResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
             .reqwest_client
@@ -72,51 +72,51 @@ impl SearchRequestBuilder {
         handle_response::<SearchResponse>(response).await
     }
 
-    pub fn lang(&mut self, lang: Lang) -> &mut Self {
+    pub fn lang(mut self, lang: Lang) -> Self {
         self.lang = lang;
         self
     }
 
-    pub fn date(&mut self, date: NaiveDate) -> &mut Self {
+    pub fn date(mut self, date: NaiveDate) -> Self {
         self.date = date;
         self
     }
 
-    pub fn date_str(&mut self, date_str: &str) -> &mut Self {
+    pub fn date_str(mut self, date_str: &str) -> Self {
         self.date = date_str.parse().unwrap();
         self
     }
 
-    pub fn transport_types(&mut self, transport_types: TransportType) -> &mut Self {
+    pub fn transport_types(mut self, transport_types: TransportType) -> Self {
         self.transport_types = transport_types;
         self
     }
-    pub fn system(&mut self, system: &str) -> &mut Self {
+    pub fn system(mut self, system: &str) -> Self {
         self.system = String::from(system);
         self
     }
-    pub fn show_systems(&mut self, show_systems: &str) -> &mut Self {
+    pub fn show_systems(mut self, show_systems: &str) -> Self {
         self.show_systems = String::from(show_systems);
         self
     }
-    pub fn offset(&mut self, offset: u32) -> &mut Self {
+    pub fn offset(mut self, offset: u32) -> Self {
         self.offset = offset;
         self
     }
-    pub fn limit(&mut self, limit: u32) -> &mut Self {
+    pub fn limit(mut self, limit: u32) -> Self {
         self.limit = limit;
         self
     }
 
-    pub fn add_days_mask(&mut self, add_days_mask: bool) -> &mut Self {
+    pub fn add_days_mask(mut self, add_days_mask: bool) -> Self {
         self.add_days_mask = add_days_mask;
         self
     }
-    pub fn result_timezone(&mut self, result_timezone: Tz) -> &mut Self {
+    pub fn result_timezone(mut self, result_timezone: Tz) -> Self {
         self.result_timezone = result_timezone;
         self
     }
-    pub fn transfers(&mut self, transfers: bool) -> &mut Self {
+    pub fn transfers(mut self, transfers: bool) -> Self {
         self.transfers = transfers;
         self
     }

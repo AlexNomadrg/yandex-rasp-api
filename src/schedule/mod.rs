@@ -40,7 +40,7 @@ impl ScheduleRequestBuilder {
     }
 
     /// Send the request
-    pub async fn send(&self) -> Result<ScheduleResponse, YaRaspError> {
+    pub async fn send(self) -> Result<ScheduleResponse, YaRaspError> {
         let response = self
             .ya_rasp_client
             .reqwest_client
@@ -63,37 +63,37 @@ impl ScheduleRequestBuilder {
         handle_response::<ScheduleResponse>(response).await
     }
 
-    pub fn lang(&mut self, lang: Lang) -> &mut Self {
+    pub fn lang(mut self, lang: Lang) -> Self {
         self.lang = lang;
         self
     }
 
-    pub fn date(&mut self, date: NaiveDate) -> &mut Self {
+    pub fn date(mut self, date: NaiveDate) -> Self {
         self.date = date;
         self
     }
 
-    pub fn transport_types(&mut self, transport_type: TransportType) -> &mut Self {
+    pub fn transport_types(mut self, transport_type: TransportType) -> Self {
         self.transport_types = transport_type;
         self
     }
 
-    pub fn system(&mut self, system: String) -> &mut Self {
+    pub fn system(mut self, system: String) -> Self {
         self.system = system;
         self
     }
 
-    pub fn direction(&mut self, direction: String) -> &mut Self {
+    pub fn direction(mut self, direction: String) -> Self {
         self.direction = direction;
         self
     }
 
-    pub fn show_systems(&mut self, show_systems: String) -> &mut Self {
+    pub fn show_systems(mut self, show_systems: String) -> Self {
         self.show_systems = show_systems;
         self
     }
 
-    pub fn result_timezone(&mut self, result_timezone: Tz) -> &mut Self {
+    pub fn result_timezone(mut self, result_timezone: Tz) -> Self {
         self.result_timezone = result_timezone;
         self
     }
