@@ -8,8 +8,8 @@ pub enum ScheduleEvent {
     Departure,
 }
 
-impl ScheduleEvent {
-    pub fn to_string(&self) -> String {
+impl ToString for ScheduleEvent {
+    fn to_string(&self) -> String {
         match self {
             &ScheduleEvent::Arrival => "arrival".to_string(),
             &ScheduleEvent::Departure => "departure".to_string(),

@@ -5,11 +5,11 @@ pub enum Lang {
     UA,
 }
 
-impl Lang {
-    pub fn to_string(&self) -> &'static str {
+impl ToString for Lang {
+    fn to_string(&self) -> String {
         match self {
-            Lang::RU => "ru_RU",
-            Lang::UA => "ua_UA",
+            Lang::RU => "ru_RU".to_owned(),
+            Lang::UA => "ua_UA".to_owned(),
         }
     }
 }

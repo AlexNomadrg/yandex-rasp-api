@@ -1,3 +1,4 @@
+/// Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/list-stations-route>
 mod thread_response;
 
 use crate::enums::{CodeSystem, Lang};

@@ -2,7 +2,7 @@
 mod schedule_response;
 pub use schedule_response::*;
 
-use crate::enums::{Lang, ScheduleEvent, TransportType};
+use crate::enums::{CodeSystem, Lang, ScheduleEvent, TransportType};
 use crate::errors::YaRaspError;
 use crate::handle_response::handle_response;
 use crate::YaRaspClient;
@@ -17,8 +17,8 @@ pub struct ScheduleRequestBuilder {
     date: NaiveDate,
     transport_types: TransportType,
     event: ScheduleEvent,
-    system: String,
-    show_systems: String,
+    system: CodeSystem,
+    show_systems: CodeSystem,
     direction: String,
     result_timezone: Tz,
 }
@@ -31,10 +31,10 @@ impl ScheduleRequestBuilder {
             lang: Lang::default(),
             date: Local::now().naive_local().date(),
             transport_types: TransportType::default(),
-            system: String::from("yandex"),
+            system: CodeSystem::Yandex,
             event: ScheduleEvent::default(),
-            show_systems: String::from("yandex"),
-            direction: String::from("на Оредеж"),
+            show_systems: CodeSystem::Yandex,
+            direction: String::from("all"),
             result_timezone: UTC,
         }
     }
@@ -52,9 +52,9 @@ impl ScheduleRequestBuilder {
                 ("lang", &self.lang.to_string()),
                 ("date", &self.date.to_string()),
                 ("transport_types", &self.transport_types.to_string()),
-                ("system", &self.system),
+                ("system", &self.system.to_string()),
                 ("event", &self.event.to_string()),
-                ("show_systems", &self.show_systems),
+                ("show_systems", &self.show_systems.to_string()),
                 ("direction", &self.direction),
                 ("result_timezone", &self.result_timezone.to_string()),
             ])
@@ -78,7 +78,7 @@ impl ScheduleRequestBuilder {
         self
     }
 
-    pub fn system(mut self, system: String) -> Self {
+    pub fn system(mut self, system: CodeSystem) -> Self {
         self.system = system;
         self
     }
@@ -88,8 +88,8 @@ impl ScheduleRequestBuilder {
         self
     }
 
-    pub fn show_systems(mut self, show_systems: String) -> Self {
-        self.show_systems = show_systems;
+    pub fn show_systems(mut self, system: CodeSystem) -> Self {
+        self.show_systems = system;
         self
     }
 

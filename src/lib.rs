@@ -46,6 +46,9 @@ impl YaRaspClient {
         StationsListRequestBuilder::new(self.clone())
     }
 
+    /// Returns a request builder for retrieving all routes from the station whose code was provided.
+    /// Can be used to find a station code by its name
+    /// Yandex API Docs: <https://yandex.ru/dev/rasp/doc/ru/reference/list-stations-route>
     pub fn thread(&self, thread_uid: &str) -> ThreadRequestBuilder {
         ThreadRequestBuilder::new(self.clone(), thread_uid)
     }

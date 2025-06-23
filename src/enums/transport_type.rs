@@ -13,8 +13,8 @@ pub enum TransportType {
     Sea,
 }
 
-impl TransportType {
-    pub fn to_string(&self) -> String {
+impl ToString for TransportType {
+    fn to_string(&self) -> String {
         match self {
             &TransportType::All => String::from("all"),
             &TransportType::Plane => String::from("plane"),
