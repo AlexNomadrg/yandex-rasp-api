@@ -1,6 +1,6 @@
 mod thread_response;
 
-use crate::enums::Lang;
+use crate::enums::{CodeSystem, Lang};
 use crate::errors::YaRaspError;
 use crate::handle_response::handle_response;
 use crate::thread::thread_response::ThreadResponse;
@@ -26,7 +26,7 @@ impl ThreadRequestBuilder {
             to: "".to_string(),
             lang: Lang::default(),
             date: Local::now().date_naive(),
-            show_systems: "yandex".to_string(),
+            show_systems: CodeSystem::Yandex,
         }
     }
 
@@ -43,11 +43,34 @@ impl ThreadRequestBuilder {
                 ("to", &self.to),
                 ("lang", &self.lang.to_string()),
                 ("date", &self.date.to_string()),
-                ("show_systems", &self.show_systems),
+                ("show_systems", &self.show_systems.to_string()),
             ])
             .send()
             .await?;
 
         handle_response::<ThreadResponse>(response).await
+    }
+
+    pub fn from(&mut self, station_id: &str) -> &mut Self {
+        self.from = station_id.to_owned();
+        self
+    }
+    pub fn to(&mut self, station_id: &str) -> &mut Self {
+        self.to = station_id.to_owned();
+        self
+    }
+
+    pub fn lang(&mut self, lang: Lang) -> &mut Self {
+        self.lang = lang;
+        self
+    }
+
+    pub fn data(&mut self, date: NaiveDate) -> &mut Self {
+        self.date = date;
+        self
+    }
+
+    pub fn show_systems(&mut self, code_system: CodeSystem) -> &mut Self {
+        self
     }
 }
